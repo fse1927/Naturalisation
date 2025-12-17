@@ -26,6 +26,12 @@ const CHAPTERS = [
     { id: 'La France dans le monde', label: 'France & Monde', icon: Globe, color: 'text-green-600', bg: 'bg-green-100' }
 ];
 
+const DIFFICULTIES = [
+    { id: 'facile', label: 'Facile', color: 'text-green-700', bg: 'bg-green-100' },
+    { id: 'moyen', label: 'Moyen', color: 'text-yellow-700', bg: 'bg-yellow-100' },
+    { id: 'difficile', label: 'Difficile', color: 'text-red-700', bg: 'bg-red-100' }
+];
+
 export default function LearningList({ items, currentPage, totalPages }: LearningListProps) {
     const router = useRouter();
     const pathname = usePathname();
@@ -33,6 +39,7 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
     const [isPending, startTransition] = useTransition();
 
     const currentChapter = searchParams.get('chapter');
+    const currentDifficulty = searchParams.get('difficulty');
     const searchQuery = searchParams.get('search') || "";
 
     const handleSearch = (term: string) => {
@@ -52,6 +59,17 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
             params.set('chapter', chapter);
         } else {
             params.delete('chapter');
+        }
+        params.set('page', '1');
+        router.push(`${pathname}?${params.toString()}`);
+    };
+
+    const handleDifficultyChange = (difficulty: string | null) => {
+        const params = new URLSearchParams(searchParams);
+        if (difficulty) {
+            params.set('difficulty', difficulty);
+        } else {
+            params.delete('difficulty');
         }
         params.set('page', '1');
         router.push(`${pathname}?${params.toString()}`);
@@ -94,6 +112,33 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
                         >
                             <chapter.icon className={cn("w-4 h-4", currentChapter !== chapter.id && chapter.color)} />
                             {chapter.label}
+                        </Button>
+                    ))}
+                </div>
+
+                {/* Difficulty Filters */}
+                <div className="flex flex-wrap gap-2 justify-center pt-2 border-t border-gray-100">
+                    <span className="text-sm text-gray-400 flex items-center mr-2">Niveau :</span>
+                    <Button
+                        variant={!currentDifficulty ? "secondary" : "ghost"}
+                        size="sm"
+                        onClick={() => handleDifficultyChange(null)}
+                        className={cn("rounded-full", !currentDifficulty && "bg-gray-100 text-gray-900")}
+                    >
+                        Tous
+                    </Button>
+                    {DIFFICULTIES.map(diff => (
+                        <Button
+                            key={diff.id}
+                            variant={currentDifficulty === diff.id ? "secondary" : "ghost"}
+                            size="sm"
+                            onClick={() => handleDifficultyChange(diff.id)}
+                            className={cn(
+                                "rounded-full capitalize",
+                                currentDifficulty === diff.id && cn(diff.bg, diff.color)
+                            )}
+                        >
+                            {diff.label}
                         </Button>
                     ))}
                 </div>

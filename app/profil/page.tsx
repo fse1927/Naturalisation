@@ -152,7 +152,7 @@ export default async function ProfilPage() {
                         <Award className="w-5 h-5 text-yellow-500" />
                         Mes Badges
                     </h3>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         {/* Badge 1 */}
                         <div className={`p-4 rounded-xl border flex flex-col items-center gap-2 transition-all ${stats.totalTests >= 1 ? 'bg-yellow-50 border-yellow-200 dark:bg-yellow-900/10 dark:border-yellow-900/30 scale-100 shadow-sm' : 'bg-gray-50/50 border-gray-100 grayscale opacity-60 dark:bg-slate-800/50 dark:border-slate-800'}`}>
                             <div className="text-3xl filter drop-shadow-sm">🌱</div>

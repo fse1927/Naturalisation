@@ -50,7 +50,7 @@ export default function InterviewSimulator({ userSituation = 'salarié', questio
     }
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-[600px]">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col min-h-[500px] lg:min-h-[600px]">
             {/* Header */}
             <div className="bg-gray-50 p-4 flex justify-between items-center border-b">
                 <div className="flex items-center gap-2 text-sm text-gray-500">

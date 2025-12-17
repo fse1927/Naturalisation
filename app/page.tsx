@@ -14,7 +14,7 @@ export default function Home() {
             <span>N°1 pour la naturalisation</span>
           </div>
 
-          <h1 className="text-4xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight max-w-4xl mx-auto animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100">
+          <h1 className="text-3xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight max-w-4xl mx-auto animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100">
             Devenez citoyen français <span className="text-primary block mt-2">en toute confiance.</span>
           </h1>
 
