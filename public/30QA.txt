@@ -1,0 +1,331 @@
+[
+  {
+    "id": 1001,
+    "theme": "Motivation et Intégration",
+    "question": "Expliquez les raisons profondes pour lesquelles vous souhaitez devenir Français(e).",
+    "reponses_possibles": [
+      "Attachement aux valeurs de la République (Liberté, Égalité, Fraternité).",
+      "Désir de participer pleinement à la vie civique et politique (droit de vote, engagement associatif).",
+      "Reconnaissance envers la France et son histoire.",
+      "Ancrage familial et professionnel durable."
+    ]
+  },
+  {
+    "id": 1002,
+    "theme": "Valeurs de la République",
+    "question": "Que signifie pour vous la devise 'Liberté, Égalité, Fraternité' dans votre vie quotidienne ?",
+    "reponses_possibles": [
+      "**Liberté :** Pouvoir de choisir sa religion, son métier, son expression, dans le respect de la loi.",
+      "**Égalité :** Égalité entre les hommes et les femmes, et égalité devant la loi et le service public.",
+      "**Fraternité :** Solidarité et assistance mutuelle, respect des autres, vivre-ensemble.",
+      "Application concrète dans les relations de travail ou de voisinage."
+    ]
+  },
+  {
+    "id": 1003,
+    "theme": "Laïcité",
+    "question": "Expliquez le principe de laïcité et comment vous le vivez en France.",
+    "reponses_possibles": [
+      "Laïcité = Séparation des Églises et de l'État (Loi de 1905).",
+      "Garantie de la liberté de conscience et de culte pour tous.",
+      "Neutralité des services publics (école, administration) : pas de prosélytisme, pas de signes religieux ostentatoires pour les agents.",
+      "Le respect de la laïcité est essentiel pour le vivre-ensemble."
+    ]
+  },
+  {
+    "id": 1004,
+    "theme": "Droit des Femmes / Égalité",
+    "question": "En France, les femmes et les hommes sont égaux en droit. Que cela implique-t-il concrètement pour vous et votre famille ?",
+    "reponses_possibles": [
+      "Égalité salariale et professionnelle (accès aux mêmes métiers et responsabilités).",
+      "Égalité politique (droit de vote et d'éligibilité).",
+      "Égalité dans la sphère familiale (autorité parentale conjointe, consentement au mariage, droit de divorcer).",
+      "Refus de toute forme de violence ou de discrimination basée sur le genre."
+    ]
+  },
+  {
+    "id": 1005,
+    "theme": "Histoire et Citoyenneté",
+    "question": "Citez un événement ou une figure historique française qui vous inspire particulièrement, et pourquoi.",
+    "reponses_possibles": [
+      "**Charles de Gaulle :** Pour son rôle dans la Résistance et la fondation de la Cinquième République.",
+      "**Marie Curie :** Pour sa contribution scientifique et son exemplarité en tant que femme.",
+      "**Simone Veil :** Pour son combat pour le droit des femmes et son témoignage sur la Shoah.",
+      "**La Révolution Française :** Pour l'établissement des idéaux de la Déclaration des Droits de l'Homme."
+    ]
+  },
+  {
+    "id": 1006,
+    "theme": "Devoirs du Citoyen",
+    "question": "Quels sont les devoirs d'un citoyen français ?",
+    "reponses_possibles": [
+      "Respecter les lois et règlements (Code Civil, Code Pénal).",
+      "Contribuer aux charges publiques (payer ses impôts).",
+      "Défendre le pays (Service National Universel ou service militaire volontaire, Journée Défense et Citoyenneté).",
+      "Participer à la vie démocratique (voter, être juré, etc.)."
+    ]
+  },
+  {
+    "id": 1007,
+    "theme": "Démocratie",
+    "question": "Comment fonctionne la démocratie en France ? Expliquez la séparation des pouvoirs.",
+    "reponses_possibles": [
+      "Démocratie = Le pouvoir appartient au peuple (suffrage universel).",
+      "**Séparation des pouvoirs :** Exécutif (Président/Gouvernement), Législatif (Parlement), Judiciaire (Magistrats).",
+      "Ceci garantit que le pouvoir n'est pas concentré et protège les libertés."
+    ]
+  },
+  {
+    "id": 1008,
+    "theme": "Vie locale",
+    "question": "Comment vous êtes-vous intégré(e) dans votre ville ou votre région ? (Associations, travail, école des enfants...)",
+    "reponses_possibles": [
+      "Participation à la vie de l'école (conseil d'école, activités extrascolaires).",
+      "Engagement dans une association (sportive, culturelle, caritative).",
+      "Insertion professionnelle réussie et contribution à l'économie locale.",
+      "Relations de voisinage et participation à la vie du quartier."
+    ]
+  },
+  {
+    "id": 1009,
+    "theme": "Santé et Social",
+    "question": "Que savez-vous du système de Sécurité Sociale français et de votre rôle en tant que futur(e) affilié(e) ?",
+    "reponses_possibles": [
+      "C'est un système de solidarité (mis en place en 1945) qui couvre la Maladie, la Retraite, la Famille, le Travail.",
+      "Il est financé par les cotisations (des employeurs et des salariés).",
+      "Il garantit l'accès aux soins pour tous (remboursement, CMU, etc.).",
+      "Mon rôle est de cotiser et de respecter les règles (médecin traitant, parcours de soins coordonnés)."
+    ]
+  },
+  {
+    "id": 1010,
+    "theme": "Engagement personnel",
+    "question": "Si vous obtenez la nationalité française, qu'est-ce qui va changer dans votre vie ? Comment comptez-vous vous engager ?",
+    "reponses_possibles": [
+      "Exercer mon droit de vote (aux élections locales, nationales et européennes).",
+      "Postuler à des emplois qui nécessitent la nationalité.",
+      "M'engager dans la vie associative ou politique pour contribuer au bien public.",
+      "Renforcer mon sentiment d'appartenance et de responsabilité."
+    ]
+  },
+  {
+    "id": 1011,
+    "theme": "Famille et Coutumes",
+    "question": "En France, les lois de la République priment sur les traditions ou les règles communautaires. Êtes-vous d'accord avec ce principe ? Donnez un exemple.",
+    "reponses_possibles": [
+      "**Accord total :** La loi est la même pour tous et est le seul cadre de référence.",
+      "Exemple : Interdiction de la polygamie.",
+      "Exemple : Obligation scolaire pour tous les enfants, sans distinction.",
+      "Exemple : Respect de l'égalité homme-femme (autorité parentale conjointe) même si ma culture d'origine est différente."
+    ]
+  },
+  {
+    "id": 1012,
+    "theme": "Union Européenne",
+    "question": "Quel est le rôle de la France au sein de l'Union Européenne ?",
+    "reponses_possibles": [
+      "La France est un membre fondateur de l'UE.",
+      "Elle participe aux décisions (Conseil de l'UE, vote au Parlement Européen).",
+      "Elle est un moteur de l'intégration (Euro, Espace Schengen).",
+      "Elle contribue au budget et applique les lois européennes."
+    ]
+  },
+  {
+    "id": 1013,
+    "theme": "Droits de l'enfant",
+    "question": "Que garantit la République pour l'éducation de vos enfants ?",
+    "reponses_possibles": [
+      "École obligatoire, gratuite et laïque (jusqu'à 16 ans).",
+      "Droit au respect de l'enfant et à son développement (convention internationale des droits de l'enfant).",
+      "Protection contre la maltraitance (signalement aux services sociaux).",
+      "Égalité d'accès à l'instruction, quel que soit le statut des parents."
+    ]
+  },
+  {
+    "id": 1014,
+    "theme": "Justice",
+    "question": "Que garantit le principe de présomption d'innocence ?",
+    "reponses_possibles": [
+      "Toute personne accusée est réputée innocente tant que sa culpabilité n'a pas été légalement établie.",
+      "C'est un droit fondamental et un principe de la justice (DDHC).",
+      "Cela garantit que l'accusation doit apporter la preuve et non l'inverse.",
+      "Toute personne a droit à un procès équitable et à être défendue."
+    ]
+  },
+  {
+    "id": 1015,
+    "theme": "Travail et Droits",
+    "question": "Quels sont les droits fondamentaux dont vous bénéficiez dans votre travail en France ?",
+    "reponses_possibles": [
+      "Droit de grève.",
+      "Droit à un salaire minimum (SMIC).",
+      "Droit aux congés payés.",
+      "Protection contre les discriminations et le harcèlement (moral ou sexuel)."
+    ]
+  },
+  {
+    "id": 1016,
+    "theme": "Histoire contemporaine",
+    "question": "Que représente le 18 juin 1940 pour l'histoire de France ?",
+    "reponses_possibles": [
+      "C'est la date de l'appel du Général de Gaulle depuis Londres.",
+      "Il a marqué le début de la Résistance française.",
+      "Un refus de la capitulation et de l'armistice signés par le Maréchal Pétain.",
+      "Un engagement pour la liberté et l'honneur de la France."
+    ]
+  },
+  {
+    "id": 1017,
+    "theme": "Devoirs conjugaux",
+    "question": "Citez les devoirs et obligations du mariage civil en France.",
+    "reponses_possibles": [
+      "Fidélité, Secours, Assistance (morale, matérielle).",
+      "Devoir de communauté de vie.",
+      "Contribution aux charges du mariage (proportionnellement aux revenus).",
+      "Respect mutuel des époux."
+    ]
+  },
+  {
+    "id": 1018,
+    "theme": "Service public",
+    "question": "Citez les principes fondamentaux du service public en France.",
+    "reponses_possibles": [
+      "**Égalité :** Traitement égal de tous les usagers.",
+      "**Continuité :** Le service doit être assuré sans interruption.",
+      "**Mutabilité / Adaptabilité :** Le service doit s'adapter aux besoins du public.",
+      "**Neutralité/Laïcité :** Absence de discrimination ou de prosélytisme."
+    ]
+  },
+  {
+    "id": 1019,
+    "theme": "Langue et Culture",
+    "question": "Qu'est-ce qui vous plaît dans la culture française (littérature, art, cinéma, mode) ?",
+    "reponses_possibles": [
+      "La richesse de la littérature (Hugo, Molière, Camus).",
+      "Le patrimoine (musées, monuments historiques, cuisine).",
+      "La place centrale de l'art de vivre et de la liberté d'expression.",
+      "La diversité régionale et culturelle (langues régionales, fêtes locales)."
+    ]
+  },
+  {
+    "id": 1020,
+    "theme": "Intégration et Citoyenneté",
+    "question": "Comment concevez-vous votre rôle pour contribuer au 'vivre-ensemble' en France ?",
+    "reponses_possibles": [
+      "Respecter les lois et les coutumes locales.",
+      "Participer activement à la vie sociale (associations, fêtes, réunions de quartier).",
+      "Accepter la diversité et lutter contre toutes les formes de discrimination ou de communautarisme.",
+      "Transmettre les valeurs de la République à mes enfants."
+    ]
+  },
+  {
+    "id": 1021,
+    "theme": "Histoire moderne",
+    "question": "Que retenez-vous de l'Affaire Dreyfus ?",
+    "reponses_possibles": [
+      "C'est un conflit de la fin du XIXe siècle autour d'un officier juif accusé de trahison.",
+      "Elle a révélé l'antisémitisme et l'opposition entre forces progressistes et conservatrices.",
+      "Elle est un symbole de la lutte pour la vérité et la justice (rôle d'Émile Zola).",
+      "Elle a marqué l'importance de la défense de l'État de droit en France."
+    ]
+  },
+  {
+    "id": 1022,
+    "theme": "Géographie",
+    "question": "Décrivez la région où vous vivez. Citez des villes, des spécialités ou des particularités.",
+    "reponses_possibles": [
+      "Nom de la Région et du Département.",
+      "Villes importantes et leur lien avec l'économie locale.",
+      "Spécialités gastronomiques ou produits régionaux (vins, fromages, etc.).",
+      "Monuments ou sites naturels remarquables."
+    ]
+  },
+  {
+    "id": 1023,
+    "theme": "Droits fondamentaux",
+    "question": "Qu'est-ce que le droit de manifester en France, et quelles sont ses limites ?",
+    "reponses_possibles": [
+      "C'est un droit fondamental garanti (Constitution, DDHC).",
+      "Il permet d'exprimer collectivement des opinions dans l'espace public.",
+      "**Limites :** Il est soumis à une déclaration préalable en préfecture/mairie.",
+      "Il doit se dérouler dans le respect de l'ordre public (pas de violence, pas de destruction)."
+    ]
+  },
+  {
+    "id": 1024,
+    "theme": "Institution : Le Parlement",
+    "question": "Quel est le rôle du Parlement français ?",
+    "reponses_possibles": [
+      "Il exerce le pouvoir législatif (voter les lois).",
+      "Il contrôle l'action du Gouvernement.",
+      "Il est composé de l'Assemblée Nationale (élue au suffrage direct) et du Sénat (élu au suffrage indirect).",
+      "Il est le garant de la souveraineté nationale (avec le Président)."
+    ]
+  },
+  {
+    "id": 1025,
+    "theme": "Valeurs",
+    "question": "Que signifie pour vous la dignité de la personne humaine, garantie par la République ?",
+    "reponses_possibles": [
+      "Elle est un principe fondamental qui interdit toute atteinte à l'intégrité physique et morale (torture, traitements inhumains).",
+      "Elle s'applique à toute personne, sans exception.",
+      "Elle est à la base de l'ordre public et des droits de l'homme.",
+      "Elle implique le droit au respect de la vie privée."
+    ]
+  },
+  {
+    "id": 1026,
+    "theme": "Économie",
+    "question": "Quelles sont les grandes lignes de l'économie française (secteurs clés, rôle de l'État) ?",
+    "reponses_possibles": [
+      "Secteurs clés : Aéronautique, Automobile, Luxe, Tourisme, Agriculture.",
+      "La France est la 7ème puissance mondiale et 2ème de la Zone Euro.",
+      "Économie sociale de marché (rôle de l'État dans la régulation et la protection sociale).",
+      "Elle est fortement intégrée à l'UE et au marché unique."
+    ]
+  },
+  {
+    "id": 1027,
+    "theme": "Justice",
+    "question": "Que se passe-t-il si vous êtes victime ou témoin d'une infraction (vol, agression, etc.) ?",
+    "reponses_possibles": [
+      "Contacter la Police ou la Gendarmerie (17 ou 112).",
+      "Déposer plainte au commissariat ou en gendarmerie.",
+      "Signaler l'infraction (sans forcément déposer plainte).",
+      "Si je suis témoin, apporter mon témoignage à la justice si besoin."
+    ]
+  },
+  {
+    "id": 1028,
+    "theme": "Institutions : Le Président",
+    "question": "Quel est le rôle du Président de la République ?",
+    "reponses_possibles": [
+      "Chef de l'État et garant de la Constitution (Cinquième République).",
+      "Nomme le Premier Ministre et préside le Conseil des Ministres.",
+      "Chef des armées et responsable de la diplomatie.",
+      "Il incarne l'unité de la Nation."
+    ]
+  },
+  {
+    "id": 1029,
+    "theme": "PACS et Mariage",
+    "question": "Quelle est la différence entre le Pacte Civil de Solidarité (PACS) et le mariage ?",
+    "reponses_possibles": [
+      "**PACS :** Contrat conclu par deux personnes pour organiser leur vie commune (plus facile à dissoudre).",
+      "**Mariage :** Engagement solennel (devant le Maire ou l'officier d'état civil), plus de devoirs (fidélité, assistance) et plus de droits (héritage, retraite).",
+      "Les deux sont ouverts aux couples de même sexe depuis 2013 pour le mariage, et depuis 1999 pour le PACS.",
+      "Le mariage crée l'alliance entre les familles (l'on devient gendre/belle-fille), pas le PACS."
+    ]
+  },
+  {
+    "id": 1030,
+    "theme": "Valeurs",
+    "question": "Qu'est-ce que l'esprit de Résistance pour vous aujourd'hui ?",
+    "reponses_possibles": [
+      "Refuser l'injustice, l'intolérance et la soumission.",
+      "Défendre les valeurs de la République (Liberté, Égalité, Fraternité).",
+      "S'engager civiquement pour le bien commun.",
+      "Lutter contre l'antisémitisme, le racisme et toutes les formes de discrimination."
+    ]
+  }
+]
