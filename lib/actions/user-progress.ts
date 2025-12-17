@@ -6,8 +6,8 @@ import { UserStats } from '@/lib/types';
 // ... (existing code: markModuleAsLearned, isModuleLearned, getUserStats, getUserProgressList, getGlobalProgress)
 
 // New: wrapper for client-side marking of questions
-export async function markQuestionAsLearned(questionId: number) {
-    return markModuleAsLearned(questionId.toString());
+export async function markQuestionAsLearned(questionId: string) {
+    return markModuleAsLearned(questionId);
 }
 
 export async function getParcoursQuestions(level: string, limit: number = 10) {

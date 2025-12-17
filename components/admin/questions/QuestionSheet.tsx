@@ -1,6 +1,6 @@
 'use client';
 
-import { Question } from '@/lib/types';
+import { Question } from '@/lib/data/types';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,12 +22,12 @@ export function QuestionSheet({ isOpen, onClose, question }: QuestionSheetProps)
     // Reset form when question changes
     const defaultValues = {
         question: question?.question || '',
-        answer: (question as any)?.answer || (question as any)?.reponse_correcte || '',
+        answer: question?.answer || '',
         theme: question?.theme || 'Histoire',
-        type: (question as any)?.type || 'quiz',
-        options: (question as any)?.options || (question?.autres_reponses_fausses) || ['', '', ''],
-        tips: (question as any)?.metadata?.tips || '',
-        difficulty: (question as any)?.metadata?.difficulty || 'Moyen'
+        type: question?.type || 'quiz',
+        options: question?.options || ['', '', ''],
+        tips: (question?.metadata as any)?.tips || '', // Metadata is generic, might need cast or better type
+        difficulty: question?.difficulty || 'moyen'
     };
 
     // Need to update state when prop changes

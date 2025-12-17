@@ -7,10 +7,14 @@ import { User, Trophy, Activity, LogOut, Settings, Award } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import ThemeToggle from '@/components/ThemeToggle';
 import { HistoryChart } from '@/components/profile/HistoryChart';
-import FadeIn from '@/components/motion/FadeIn';
 import { AdminLink } from '@/components/admin/AdminLink';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata = {
+    title: 'Mon Profil | Réussite France Citoyen',
+    description: 'Suivez votre progression, vos scores et gérez vos informations personnelles.',
+};
 
 export default async function ProfilPage() {
     const data = await getUserProfile();
@@ -43,7 +47,7 @@ export default async function ProfilPage() {
             </header>
 
             {/* User Info Card */}
-            <FadeIn delay={0.1}>
+            <div className="animate-in fade-in slide-in-from-bottom-5 duration-700 delay-100">
                 <Card className="dark:bg-slate-900 dark:border-slate-800 border-none shadow-md overflow-hidden relative">
                     {/* ... existing card content ... */}
                     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-blue-400"></div>
@@ -202,10 +206,10 @@ export default async function ProfilPage() {
                         </div>
                     </CardContent>
                 </Card>
-            </FadeIn>
+            </div>
 
             {/* Global Progress Bar */}
-            <FadeIn delay={0.2}>
+            <div className="animate-in fade-in slide-in-from-bottom-5 duration-700 delay-200">
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 dark:bg-slate-900 dark:border-slate-800">
                     <div className="flex justify-between items-center mb-2">
                         <h3 className="font-bold text-gray-900 dark:text-white">Progression Globale</h3>
@@ -219,42 +223,40 @@ export default async function ProfilPage() {
                     </div>
                     <p className="text-xs text-gray-500 mt-2 text-right">Apprentissage du contenu</p>
                 </div>
-            </FadeIn>
+            </div>
 
             {/* Stats Grid */}
-            <FadeIn delay={0.3}>
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center justify-center gap-2 hover:border-green-200 hover:shadow-green-100/50 transition-all dark:bg-slate-900 dark:border-slate-800 dark:hover:border-green-900/30">
-                        <div className="bg-green-100 p-3 rounded-full dark:bg-green-900/30 mb-1">
-                            <Activity className="w-6 h-6 text-green-600 dark:text-green-400" />
-                        </div>
-                        <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-                            {stats.totalTests}
-                        </span>
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Tests Réalisés</span>
+            <div className="grid grid-cols-2 gap-4 animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center justify-center gap-2 hover:border-green-200 hover:shadow-green-100/50 transition-all dark:bg-slate-900 dark:border-slate-800 dark:hover:border-green-900/30">
+                    <div className="bg-green-100 p-3 rounded-full dark:bg-green-900/30 mb-1">
+                        <Activity className="w-6 h-6 text-green-600 dark:text-green-400" />
                     </div>
-
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center justify-center gap-2 hover:border-orange-200 hover:shadow-orange-100/50 transition-all dark:bg-slate-900 dark:border-slate-800 dark:hover:border-orange-900/30">
-                        <div className="bg-orange-100 p-3 rounded-full dark:bg-orange-900/30 mb-1">
-                            <Trophy className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                        </div>
-                        <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-                            {Math.round(stats.avgScore)}<span className="text-lg text-gray-400">%</span>
-                        </span>
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Score Moyen</span>
-                    </div>
+                    <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                        {stats.totalTests}
+                    </span>
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Tests Réalisés</span>
                 </div>
-            </FadeIn>
+
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center justify-center gap-2 hover:border-orange-200 hover:shadow-orange-100/50 transition-all dark:bg-slate-900 dark:border-slate-800 dark:hover:border-orange-900/30">
+                    <div className="bg-orange-100 p-3 rounded-full dark:bg-orange-900/30 mb-1">
+                        <Trophy className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                    </div>
+                    <span className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                        {Math.round(stats.avgScore)}<span className="text-lg text-gray-400">%</span>
+                    </span>
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Score Moyen</span>
+                </div>
+            </div>
 
             {/* History Chart */}
             {stats.history && stats.history.length > 0 && (
-                <FadeIn delay={0.4}>
+                <div className="animate-in fade-in slide-in-from-bottom-5 duration-700 delay-200">
                     <HistoryChart history={stats.history} />
-                </FadeIn>
+                </div>
             )}
 
             {/* Badges Section */}
-            <FadeIn delay={0.5}>
+            <div className="animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 dark:bg-slate-900 dark:border-slate-800">
                     <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2 dark:text-white">
                         <Award className="w-5 h-5 text-yellow-500" />
@@ -280,7 +282,7 @@ export default async function ProfilPage() {
                         </div>
                     </div>
                 </div>
-            </FadeIn>
+            </div>
         </div>
     );
 }

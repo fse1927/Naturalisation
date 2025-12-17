@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { QuestionTable } from '@/components/admin/questions/QuestionTable';
-import { Question } from '@/lib/types';
+import { Question } from '@/lib/data/types';
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 

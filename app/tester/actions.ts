@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { Question } from '@/lib/types'
+import { Question } from '@/lib/data/types'
 import { revalidatePath } from 'next/cache'
 
 export async function getQuizQuestions(limit: number = 20): Promise<Question[]> {

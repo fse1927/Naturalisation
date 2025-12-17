@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { markModuleAsLearned } from "@/lib/actions/user-progress";
 import { cn } from "@/lib/utils";
-import { StaggerContainer, StaggerItem } from "./motion/StaggerContainer";
 
 // Extended type for UI
 export type LearningItem = ContenuApprentissage & { isLearned?: boolean };
@@ -148,7 +147,7 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
 
             {/* List */}
             {/* List */}
-            <StaggerContainer
+            <div
                 key={`${currentChapter}-${currentDifficulty}-${searchQuery}-${currentPage}`}
                 className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
@@ -157,13 +156,13 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
                         Aucun résultat trouvé.
                     </div>
                 ) : (
-                    items.map((item) => (
-                        <StaggerItem key={item.id}>
+                    items.map((item, index) => (
+                        <div key={item.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 50}ms` }}>
                             <LearningCard item={item} />
-                        </StaggerItem>
+                        </div>
                     ))
                 )}
-            </StaggerContainer>
+            </div>
 
             {/* Pagination Controls */}
             {totalPages > 1 && (

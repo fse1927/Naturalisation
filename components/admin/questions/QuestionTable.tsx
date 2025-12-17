@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 // Actually I checked components/ui and Table was NOT there. I should check again or build it.
 // Checking Step 73, only button, card, input.
@@ -18,7 +18,7 @@ import {
     MoreHorizontal,
     Plus
 } from 'lucide-react';
-import { Question } from '@/lib/types';
+import { Question } from '@/lib/data/types';
 import { QuestionSheet } from './QuestionSheet';
 
 interface QuestionTableProps {
@@ -42,19 +42,22 @@ export function QuestionTable({
     const [isSheetOpen, setIsSheetOpen] = useState(!!editingQuestion);
     const [selectedQuestion, setSelectedQuestion] = useState<Question | null>(editingQuestion || null);
 
-    // Sync if editingQuestion changes (e.g. navigation)
-    // Actually we should use useEffect
-    /*
+    // Sync state when editingQuestion prop changes (e.g. from URL navigation)
     useEffect(() => {
         if (editingQuestion) {
             setSelectedQuestion(editingQuestion);
             setIsSheetOpen(true);
+        } else {
+            // Optional: If URL param removed, close sheet? 
+            // Usually if we navigate away from ?edit=ID, editingQuestion becomes null.
+            // But we might want to keep it open if user is just creating new?
+            // Let's strictly follow the prop for "edit mode".
+            // If editingQuestion becomes null, it means we are not in "edit link" mode.
+            // But user might have just closed it.
+            // Logic: Only force open if editingQuestion is present. 
+            // If it becomes null, we don't necessarily close it because user might be manually adding.
         }
     }, [editingQuestion]);
-    */
-    // Since this is a client component, useState init only happens once unless key changes.
-    // Better to just rely on prop for initial open, or use effect.
-    // Let's use simple logic: if prop provided, open.
 
     const totalPages = Math.ceil(totalCount / pageSize);
 
@@ -206,7 +209,7 @@ export function QuestionTable({
                                             However migration script Step 64 inserts 'type'. 
                                             I should update types.ts locally or cast it. 
                                             I will assume type exists in DB. */}
-                                        {(q as any).type || 'N/A'}
+                                        {q.type || 'N/A'}
                                     </td>
                                     <td className="px-4 py-3 text-right">
                                         <div className="flex items-center justify-end gap-2">

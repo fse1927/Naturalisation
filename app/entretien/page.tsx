@@ -4,6 +4,7 @@ import { MessageCircle } from 'lucide-react';
 import { getUserProfile } from '@/app/profil/actions';
 import { getRandomQuizQuestions } from '@/lib/actions/questions';
 import { InterviewQuestion } from '@/components/interview/useInterview';
+import { Question } from '@/lib/data/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,7 +16,7 @@ export default async function EntretienPage() {
     const rawQuestions = await getRandomQuizQuestions(40);
 
     // Map to InterviewQuestion type
-    const questions: InterviewQuestion[] = rawQuestions.map((q: any) => ({
+    const questions: InterviewQuestion[] = rawQuestions.map((q: Question) => ({
         id: q.id,
         question: q.question,
         category: q.theme,

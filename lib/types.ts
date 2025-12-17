@@ -7,15 +7,7 @@ export type ContenuApprentissage = {
     created_at: string;
 };
 
-export type Question = {
-    id: number;
-    question: string;
-    reponse_correcte: string;
-    autres_reponses_fausses: string[];
-    theme: string;
-    difficulty?: 'facile' | 'moyen' | 'difficile';
-    created_at: string;
-};
+
 
 export type UserProfile = {
     id: string;

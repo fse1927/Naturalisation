@@ -5,6 +5,11 @@ import { BookOpen, CheckCircle, Star, Trophy, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getUserProgressList } from '@/lib/actions/user-progress';
 
+export const metadata = {
+    title: 'Parcours Guidé | Réussite France',
+    description: 'Progressez niveau par niveau : Débutant, Intermédiaire, Expert. Validez vos acquis étape par étape.',
+};
+
 export default async function ParcoursPage() {
     const supabase = await createClient();
 

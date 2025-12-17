@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Flag, GraduationCap, CheckCircle2, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Accueil | Réussite France Citoyen",
+  description: "L'application n°1 pour préparer et réussir votre entretien de naturalisation française. Quiz, cours et simulations gratuits.",
+};
 
 export default function Home() {
   return (

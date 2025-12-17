@@ -10,7 +10,7 @@ import confetti from 'canvas-confetti';
 import Link from 'next/link';
 
 // Types
-import { Question } from '@/lib/types';
+import { Question } from '@/lib/data/types';
 
 // Actions
 import { markQuestionAsLearned } from '@/lib/actions/user-progress';
@@ -26,7 +26,7 @@ export default function ParcoursRunner({ initialQuestions, level }: ParcoursRunn
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
     const [isAnswerChecked, setIsAnswerChecked] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
-    const [progress, setProgress] = useState(0);
+
 
     const currentQuestion = questions[currentIndex];
 
@@ -38,7 +38,7 @@ export default function ParcoursRunner({ initialQuestions, level }: ParcoursRunn
     const handleCheckAnswer = async () => {
         if (!selectedAnswer || isAnswerChecked) return;
 
-        const correct = selectedAnswer === currentQuestion.reponse_correcte;
+        const correct = selectedAnswer === currentQuestion.answer;
         setIsCorrect(correct);
         setIsAnswerChecked(true);
 
@@ -49,7 +49,7 @@ export default function ParcoursRunner({ initialQuestions, level }: ParcoursRunn
                 origin: { y: 0.6 }
             });
             await markQuestionAsLearned(currentQuestion.id);
-            setProgress(prev => prev + 1);
+
         }
     };
 
@@ -69,7 +69,7 @@ export default function ParcoursRunner({ initialQuestions, level }: ParcoursRunn
         return (
             <div className="flex flex-col items-center justify-center p-8 space-y-6 text-center animate-in fade-in">
                 <Trophy className="w-20 h-20 text-yellow-500 mb-4" />
-                <h2 className="text-3xl font-bold text-gray-800">C'est terminé pour cette session !</h2>
+                <h2 className="text-3xl font-bold text-gray-800">C&apos;est terminé pour cette session !</h2>
                 <p className="text-gray-600 max-w-md">
                     Vous avez complété cette série de questions pour le niveau <span className="capitalize font-bold">{level}</span>.
                 </p>
@@ -82,7 +82,8 @@ export default function ParcoursRunner({ initialQuestions, level }: ParcoursRunn
         );
     }
 
-    const options = [currentQuestion.reponse_correcte, ...(currentQuestion.autres_reponses_fausses || [])].filter(Boolean).sort();
+    // New Schema: options is already an array of strings
+    const options = currentQuestion.options || [];
 
     return (
         <div className="max-w-2xl mx-auto space-y-6 p-4">
@@ -116,7 +117,7 @@ export default function ParcoursRunner({ initialQuestions, level }: ParcoursRunn
                     <div className="grid gap-3">
                         {options.map((option, idx) => {
                             const isSelected = selectedAnswer === option;
-                            const isCorrectOption = option === currentQuestion.reponse_correcte;
+                            const isCorrectOption = option === currentQuestion.answer;
 
                             let variant = "bg-white border-gray-200 hover:border-primary/50 hover:bg-gray-50";
 

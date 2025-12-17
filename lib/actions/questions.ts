@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
-import { Question } from '@/lib/types'; // We might need to update types to match DB schema
+import { Question } from '@/lib/data/types';
 
 export type QuestionsFilter = {
     theme?: string;
