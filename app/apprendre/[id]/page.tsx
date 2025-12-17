@@ -53,9 +53,19 @@ export default async function LearningDetailPage(props: PageProps) {
 
             <article className="space-y-6">
                 <header className="space-y-4">
-                    <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium uppercase tracking-wider">
-                        {item.type_module}
-                    </span>
+                    <div className="flex gap-2">
+                        <span className="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium uppercase tracking-wider">
+                            {item.type_module}
+                        </span>
+                        {(questionData as any).difficulty && (
+                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider
+                                ${(questionData as any).difficulty === 'facile' ? 'bg-green-100 text-green-700' :
+                                    (questionData as any).difficulty === 'moyen' ? 'bg-yellow-100 text-yellow-700' :
+                                        'bg-red-100 text-red-700'}`}>
+                                {(questionData as any).difficulty}
+                            </span>
+                        )}
+                    </div>
                     <h1 className="text-3xl font-bold text-gray-900">{item.titre}</h1>
 
                     <TextToSpeech text={item.texte_synthese} />

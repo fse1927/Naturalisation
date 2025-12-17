@@ -35,7 +35,8 @@ export default async function ApprendrePage({
         texte_synthese: `${q.answer}\n\n💡 ${q.explanation || ''}`,
         type_module: q.theme, // or q.info_cards_chapter
         created_at: q.created_at,
-        isLearned: learnedModuleIds.includes(q.id)
+        isLearned: learnedModuleIds.includes(q.id),
+        difficulty: q.difficulty // Add difficulty to item
     }));
 
     return (
