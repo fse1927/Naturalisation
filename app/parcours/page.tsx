@@ -47,7 +47,7 @@ export default async function ParcoursPage() {
     return (
         <div className="container mx-auto p-4 max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
             <header className="text-center space-y-4 py-8">
-                <h1 className="text-4xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <h1 className="text-3xl md:text-4xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     Parcours d'Apprentissage
                 </h1>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -108,7 +108,7 @@ export default async function ParcoursPage() {
                             </div>
 
                             <div className="shrink-0">
-                                <Link href={stat.isLocked ? '#' : `/apprendre?difficulty=${stat.level}`}>
+                                <Link href={stat.isLocked ? '#' : `/parcours/play?level=${stat.level}`}>
                                     <Button
                                         size="lg"
                                         disabled={stat.isLocked}

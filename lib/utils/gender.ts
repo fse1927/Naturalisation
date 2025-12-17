@@ -30,7 +30,7 @@ export const genderedWords = {
     employee: (g: Gender) => `Employé${genderSuffix(g)}`,
     student: (g: Gender) => `Étudiant${genderSuffix(g)}`,
     retired: (g: Gender) => `Retraité${genderSuffix(g)}`,
-    unemployed: (g: Gender) => `Au chômage`,
+    unemployed: () => `Au chômage`,
 
     // Marital Status
     single: () => 'Célibataire',

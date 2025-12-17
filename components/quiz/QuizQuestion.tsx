@@ -76,7 +76,7 @@ export function QuizQuestion({
                 />
             </div>
 
-            <div className="p-6 space-y-6 flex-1 flex flex-col">
+            <div className="p-4 md:p-6 space-y-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-gray-900 leading-snug min-h-[4rem]">
                     {question.question}
                 </h3>

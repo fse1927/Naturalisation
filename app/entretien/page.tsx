@@ -34,7 +34,7 @@ export default async function EntretienPage() {
                         <MessageCircle className="w-6 h-6 text-primary" />
                     </div>
                 </div>
-                <h1 className="text-3xl font-bold text-primary">Entretien ({userSituation})</h1>
+                <h1 className="text-3xl font-bold text-primary">Entretien</h1>
                 <p className="text-gray-600">
                     Simulez les questions posées par l&apos;agent de préfecture.
                 </p>

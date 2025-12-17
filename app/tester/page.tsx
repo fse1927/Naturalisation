@@ -29,7 +29,7 @@ export default function TesterPage() {
                 </header>
             </FadeIn>
 
-            <StaggerContainer className="grid gap-6">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Entraînement */}
                 <StaggerItem>
                     <Card

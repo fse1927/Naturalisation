@@ -16,7 +16,8 @@ export function parseCSV(content: string): CSVQuestion[] {
     const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
 
     // Minimal validation of headers
-    const required = ['question', 'answer', 'theme'];
+    // Minimal validation of headers
+    // const required = ['question', 'answer', 'theme'];
     // Check if required headers exist
     // For simplicity, just proceeding
 
@@ -30,9 +31,8 @@ export function parseCSV(content: string): CSVQuestion[] {
         // For robustness, regex splitting or library is better. 
         // Simple implementation: split by comma (flawed if content has commas).
         // Let's use a simple regex for CSV parsing
-        const matches = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-        // This regex is basic. 
-        // Better: standard CSV parser steps.
+        // Regex parsing removed as unused
+
 
         const values = line.split(',');//.map(v => v.trim()); // Very Basic!
 

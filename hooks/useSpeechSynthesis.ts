@@ -12,7 +12,8 @@ export function useSpeechSynthesis({ onEnd, onError }: UseSpeechSynthesisProps =
 
     useEffect(() => {
         if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-            // eslint-disable-next-line react-hooks/exhaustive-deps
+
+            // eslint-disable-next-line
             setIsSupported(true);
         }
     }, []);
