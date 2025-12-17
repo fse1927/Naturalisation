@@ -7,6 +7,7 @@ export type QuestionsFilter = {
     theme?: string;
     chapter?: string; // For Info Cards
     search?: string;
+    difficulty?: string;
 };
 
 export async function getQuestions(
@@ -23,6 +24,10 @@ export async function getQuestions(
 
     if (filter.theme) {
         query = query.eq('theme', filter.theme);
+    }
+
+    if (filter.difficulty) {
+        query = query.eq('difficulty', filter.difficulty);
     }
 
     if (filter.chapter) {

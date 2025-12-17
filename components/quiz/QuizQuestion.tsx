@@ -52,9 +52,19 @@ export function QuizQuestion({
                     </div>
                 )}
                 {mode === 'training' && (
-                    <span className="text-xs uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded">
-                        {question.theme}
-                    </span>
+                    <div className="flex gap-2">
+                        <span className="text-xs uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold">
+                            {question.theme}
+                        </span>
+                        {(question as any).difficulty && (
+                            <span className={`text-xs uppercase px-2 py-1 rounded font-bold
+                                ${(question as any).difficulty === 'facile' ? 'bg-green-100 text-green-700' :
+                                    (question as any).difficulty === 'moyen' ? 'bg-yellow-100 text-yellow-700' :
+                                        'bg-red-100 text-red-700'}`}>
+                                {(question as any).difficulty}
+                            </span>
+                        )}
+                    </div>
                 )}
             </div>
 

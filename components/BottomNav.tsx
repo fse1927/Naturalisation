@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, FileText, MessageCircle, User } from "lucide-react";
+import { BookOpen, FileText, MessageCircle, User, Trophy } from "lucide-react";
 import clsx from "clsx";
 
 export default function BottomNav() {
@@ -23,6 +23,11 @@ export default function BottomNav() {
             label: "Entretien",
             href: "/entretien",
             icon: MessageCircle,
+        },
+        {
+            label: "Parcours",
+            href: "/parcours",
+            icon: Trophy,
         },
         {
             label: "Profil",

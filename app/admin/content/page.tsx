@@ -58,9 +58,19 @@ export default async function ContentPage({
                     <div key={item.id} className="group relative bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-slate-800 hover:shadow-md transition-all overflow-hidden flex flex-col">
                         <div className="p-6 flex-1">
                             <div className="flex justify-between items-start mb-4">
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-200">
-                                    {item.type_module}
-                                </span>
+                                <div className="flex gap-2">
+                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-200">
+                                        {item.type_module}
+                                    </span>
+                                    {(item as any).difficulty && (
+                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize
+                                            ${(item as any).difficulty === 'facile' ? 'bg-green-100 text-green-700' :
+                                                (item as any).difficulty === 'moyen' ? 'bg-yellow-100 text-yellow-700' :
+                                                    'bg-red-100 text-red-700'}`}>
+                                            {(item as any).difficulty}
+                                        </span>
+                                    )}
+                                </div>
                                 <div className="flex bg-white dark:bg-slate-900 rounded-lg border border-gray-100 dark:border-slate-800 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity absolute top-4 right-4">
                                     <Link href={`/admin/content/${item.id}`}>
                                         <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-500 hover:text-blue-600">

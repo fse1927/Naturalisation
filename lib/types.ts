@@ -13,6 +13,7 @@ export type Question = {
     reponse_correcte: string;
     autres_reponses_fausses: string[];
     theme: string;
+    difficulty?: 'facile' | 'moyen' | 'difficile';
     created_at: string;
 };
 

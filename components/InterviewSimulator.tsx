@@ -57,9 +57,19 @@ export default function InterviewSimulator({ userSituation = 'salarié', questio
                     <span className="font-bold text-gray-900">Question {currentIndex + 1}</span>
                     <span>/ {totalQuestions}</span>
                 </div>
-                <span className="text-xs uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded font-medium">
-                    {currentQuestion.category || currentQuestion.metadata?.answer_tips ? "Question" : "Général"}
-                </span>
+                <div className="flex gap-2">
+                    <span className="text-xs uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded font-medium">
+                        {currentQuestion.category || currentQuestion.metadata?.answer_tips ? "Question" : "Général"}
+                    </span>
+                    {(currentQuestion as any).difficulty && (
+                        <span className={`text-xs uppercase px-2 py-1 rounded font-medium
+                            ${(currentQuestion as any).difficulty === 'facile' ? 'bg-green-100 text-green-700' :
+                                (currentQuestion as any).difficulty === 'moyen' ? 'bg-yellow-100 text-yellow-700' :
+                                    'bg-red-100 text-red-700'}`}>
+                            {(currentQuestion as any).difficulty}
+                        </span>
+                    )}
+                </div>
             </div>
 
             {/* ProgressBar */}

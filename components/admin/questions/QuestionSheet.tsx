@@ -115,6 +115,18 @@ export function QuestionSheet({ isOpen, onClose, question }: QuestionSheetProps)
                                         <option value="Symboles">Symboles</option>
                                     </select>
                                 </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium">Difficulté</label>
+                                    <select
+                                        name="difficulty"
+                                        className="flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm"
+                                        defaultValue={defaultValues.difficulty}
+                                    >
+                                        <option value="facile">Facile</option>
+                                        <option value="moyen">Moyen</option>
+                                        <option value="difficile">Difficile</option>
+                                    </select>
+                                </div>
                             </div>
 
                             {/* Question */}

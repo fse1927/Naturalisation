@@ -168,6 +168,7 @@ export function QuestionTable({
                             <tr>
                                 <th className="px-4 py-3 font-medium">Question</th>
                                 <th className="px-4 py-3 font-medium w-32">Thème</th>
+                                <th className="px-4 py-3 font-medium w-24">Difficile</th>
                                 <th className="px-4 py-3 font-medium w-24">Type</th>
                                 <th className="px-4 py-3 font-medium w-24 text-right">Actions</th>
                             </tr>
@@ -188,6 +189,16 @@ export function QuestionTable({
                                         <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-200">
                                             {q.theme}
                                         </span>
+                                    </td>
+                                    <td className="px-4 py-3 text-gray-500 dark:text-gray-400">
+                                        {q.difficulty && (
+                                            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium capitalize
+                                                ${q.difficulty === 'facile' ? 'bg-green-100 text-green-700' :
+                                                    q.difficulty === 'moyen' ? 'bg-yellow-100 text-yellow-700' :
+                                                        'bg-red-100 text-red-700'}`}>
+                                                {q.difficulty}
+                                            </span>
+                                        )}
                                     </td>
                                     <td className="px-4 py-3 text-gray-500 dark:text-gray-400">
                                         {/* Need 'type' in Question type, checking types.ts it might be missing or optional? 

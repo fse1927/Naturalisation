@@ -27,21 +27,22 @@ export async function upsertQuestion(formData: FormData) {
     const options = [option1, option2, option3].filter(Boolean);
 
     // Metadata
+    const difficulty = formData.get('difficulty') as string || 'moyen'; // Default to moyen
+
+    // Metadata
     const tips = formData.get('tips') as string;
-    const difficulty = formData.get('difficulty') as string;
     const metadata = {
         tips,
-        difficulty
+        // difficulty // We can keep it here for legacy or remove. Let's keep it in column primarily.
     };
 
     const payload: any = {
         question,
-        answer, // Note: DB column might be 'answer' or 'reponse_correcte' depending on migration script. 
-        // Script Step 64 said: "answer TEXT NOT NULL", "reponse_correcte" was in types.ts.
-        // I will use 'answer' and 'options' columns as per migration script.
+        answer,
         theme,
         type,
         options: type === 'quiz' ? options : [],
+        difficulty, // Add to root
         metadata,
         updated_at: new Date().toISOString()
     };

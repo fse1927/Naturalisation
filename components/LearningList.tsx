@@ -196,9 +196,21 @@ function LearningCard({ item }: { item: LearningItem }) {
             </p>
 
             <div className="flex items-center justify-between mt-auto pt-2 border-t border-gray-50/50">
-                <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">
-                    {item.type_module}
-                </span>
+                <div className="flex gap-2">
+                    <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">
+                        {item.type_module}
+                    </span>
+                    {(item as any).difficulty && (
+                        <span className={cn(
+                            "text-xs font-medium px-2 py-1 rounded capitalize",
+                            (item as any).difficulty === 'facile' ? "bg-green-100 text-green-700" :
+                                (item as any).difficulty === 'moyen' ? "bg-yellow-100 text-yellow-700" :
+                                    "bg-red-100 text-red-700"
+                        )}>
+                            {(item as any).difficulty}
+                        </span>
+                    )}
+                </div>
 
                 <Button variant="link" size="sm" className="h-auto p-0 text-primary" asChild>
                     {/* Need a Link component here but difficult inside Button asChild. Just standard Link */}

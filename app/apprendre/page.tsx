@@ -16,10 +16,11 @@ export default async function ApprendrePage({
     const limit = 10;
     const search = params?.search as string;
     const chapter = params?.chapter as string;
+    const difficulty = params?.difficulty as string;
 
     // Fetch questions (used as learning content)
     const { questions, total, totalPages } = await getQuestions(
-        { theme: chapter, search }, // Note: theme corresponds effectively to chapter in our simplified model
+        { theme: chapter, search, difficulty }, // Note: theme corresponds effectively to chapter in our simplified model
         page,
         limit
     );
@@ -40,7 +41,14 @@ export default async function ApprendrePage({
     return (
         <div className="p-4 pb-20 space-y-6">
             <header>
-                <h1 className="text-3xl font-bold text-primary">Apprendre</h1>
+                <div className="flex items-center gap-3">
+                    <h1 className="text-3xl font-bold text-primary">Apprendre</h1>
+                    {difficulty && (
+                        <span className="bg-gradient-to-r from-gray-800 to-black text-white px-3 py-1 rounded-full text-sm font-bold capitalize animate-in slide-in-from-left-5">
+                            Niveau {difficulty}
+                        </span>
+                    )}
+                </div>
                 <p className="text-gray-600">Fiches de révision essentielles et Livret du Citoyen.</p>
             </header>
 
