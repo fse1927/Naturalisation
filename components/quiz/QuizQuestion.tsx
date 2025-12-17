@@ -2,6 +2,8 @@ import { Timer, CheckCircle, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Question } from '@/lib/data/types';
 import { QuizMode } from './types';
+import { useEffect } from 'react';
+import confetti from 'canvas-confetti';
 
 interface QuizQuestionProps {
     question: Question;
@@ -30,6 +32,16 @@ export function QuizQuestion({
     onValidateOrNext,
     onExit
 }: QuizQuestionProps) {
+
+    useEffect(() => {
+        if (isAnswerChecked && selectedAnswer === question.answer && mode === 'training') {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+    }, [isAnswerChecked, selectedAnswer, question.answer, mode]);
 
     const formatTime = (seconds: number) => {
         const m = Math.floor(seconds / 60);

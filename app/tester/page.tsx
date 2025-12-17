@@ -4,8 +4,7 @@ import { useState } from 'react';
 import QuizRunner from '@/components/QuizRunner';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen, HelpCircle, Timer } from 'lucide-react';
-import { StaggerContainer, StaggerItem } from "@/components/motion/StaggerContainer";
-import FadeIn from "@/components/motion/FadeIn";
+
 
 export default function TesterPage() {
     const [mode, setMode] = useState<'training' | 'exam' | null>(null);
@@ -21,22 +20,19 @@ export default function TesterPage() {
     }
 
     return (
-        <div className="p-4 pb-24 max-w-xl mx-auto space-y-6">
-            <FadeIn>
-                <header>
-                    <h1 className="text-3xl font-bold text-primary">S&apos;entraîner</h1>
-                    <p className="text-gray-600">Choisissez votre mode de test.</p>
-                </header>
-            </FadeIn>
+        <div className="p-4 pb-24 max-w-xl mx-auto space-y-6 animate-enter">
+            <header>
+                <h1 className="text-3xl font-bold text-primary">S&apos;entraîner</h1>
+                <p className="text-gray-600">Choisissez votre mode de test.</p>
+            </header>
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Entraînement */}
-                <StaggerItem>
+                <div>
                     <Card
                         className="cursor-pointer hover:border-primary hover:shadow-md transition-all group"
                         onClick={() => setMode('training')}
                     >
-                        {/* ... content ... */}
                         <CardHeader className="flex flex-row items-center gap-4 py-4">
                             <div className="bg-blue-50 p-3 rounded-full group-hover:bg-blue-100 transition-colors">
                                 <BookOpen className="w-8 h-8 text-primary" />
@@ -52,15 +48,14 @@ export default function TesterPage() {
                             </p>
                         </CardContent>
                     </Card>
-                </StaggerItem>
+                </div>
 
                 {/* Examen */}
-                <StaggerItem>
+                <div>
                     <Card
                         className="cursor-pointer hover:border-red-500 hover:shadow-md transition-all group"
                         onClick={() => setMode('exam')}
                     >
-                        {/* ... content ... */}
                         <CardHeader className="flex flex-row items-center gap-4 py-4">
                             <div className="bg-red-50 p-3 rounded-full group-hover:bg-red-100 transition-colors">
                                 <Timer className="w-8 h-8 text-red-600" />
@@ -76,17 +71,15 @@ export default function TesterPage() {
                             </p>
                         </CardContent>
                     </Card>
-                </StaggerItem>
-            </StaggerContainer>
-
-            <FadeIn delay={0.3}>
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-start gap-3">
-                    <HelpCircle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
-                    <p className="text-sm text-yellow-800">
-                        Pour réussir, vous devez obtenir au moins 24 bonnes réponses (60%) à l&apos;examen officiel. Visez 70% pour être sûr !
-                    </p>
                 </div>
-            </FadeIn>
+            </div>
+
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-start gap-3">
+                <HelpCircle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
+                <p className="text-sm text-yellow-800">
+                    Pour réussir, vous devez obtenir au moins 24 bonnes réponses (60%) à l&apos;examen officiel. Visez 70% pour être sûr !
+                </p>
+            </div>
         </div>
     );
 }

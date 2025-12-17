@@ -45,7 +45,7 @@ export default async function ParcoursPage() {
     if (levelStats[1].progress < 50 || levelStats[1].isLocked) levelStats[2].isLocked = true;
 
     return (
-        <div className="container mx-auto p-4 max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
+        <div className="container mx-auto p-4 max-w-4xl space-y-8 animate-enter">
             <header className="text-center space-y-4 py-8">
                 <h1 className="text-3xl md:text-4xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     Parcours d'Apprentissage
