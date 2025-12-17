@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { markModuleAsLearned } from "@/lib/actions/user-progress";
 import { cn } from "@/lib/utils";
+import { StaggerContainer, StaggerItem } from "./motion/StaggerContainer";
 
 // Extended type for UI
 export type LearningItem = ContenuApprentissage & { isLearned?: boolean };
@@ -98,18 +99,22 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
                 </div>
             </div>
 
+            {/* filters end */}
+
             {/* List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {items.length === 0 ? (
                     <div className="col-span-full text-center py-16 text-gray-500">
                         Aucun résultat trouvé.
                     </div>
                 ) : (
                     items.map((item) => (
-                        <LearningCard key={item.id} item={item} />
+                        <StaggerItem key={item.id}>
+                            <LearningCard item={item} />
+                        </StaggerItem>
                     ))
                 )}
-            </div>
+            </StaggerContainer>
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
