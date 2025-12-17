@@ -10,11 +10,40 @@ export async function getUserProfile(): Promise<{ user: UserProfile; stats: User
 
     if (!user) return null
 
-    const { data: profile } = await supabase
+    let { data: profile } = await supabase
         .from('utilisateurs')
         .select('*')
         .eq('id', user.id)
         .single()
+
+    // Lazy Sync: If profile missing but user exists (Trigger failure recovery)
+    if (!profile) {
+        console.warn('Profile missing for user, attempting lazy sync...', user.id);
+        const { data: newProfile, error } = await supabase
+            .from('utilisateurs')
+            .insert({
+                id: user.id,
+                nom_prenom: user.user_metadata?.full_name || 'Utilisateur',
+                profil_situation: user.user_metadata?.situation || 'Non défini',
+                email: user.email // Store email in public table if needed/schema allows, otherwise relying on join
+            })
+            .select()
+            .single();
+
+        if (!error && newProfile) {
+            profile = newProfile;
+        } else {
+            console.error('Failed to lazy sync profile:', error);
+            // Return basic mock to avoid blocking login loop
+            profile = {
+                id: user.id,
+                nom_prenom: user.user_metadata?.full_name || 'Utilisateur',
+                profil_situation: user.user_metadata?.situation || 'Non défini',
+                email: user.email,
+                is_admin: false
+            } as any;
+        }
+    }
 
     // Also fetch stats - Last 10 tests for chart
     const { data: history } = await supabase

@@ -38,7 +38,24 @@ export async function updateSession(request: NextRequest) {
     )
 
     // Refreshing the auth token
-    await supabase.auth.getUser()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    // Protect Admin Routes
+    if (request.nextUrl.pathname.startsWith('/admin')) {
+        if (!user) {
+            return NextResponse.redirect(new URL('/login', request.url))
+        }
+
+        const { data: profile } = await supabase
+            .from('utilisateurs')
+            .select('is_admin')
+            .eq('id', user.id)
+            .single()
+
+        if (!profile?.is_admin) {
+            return NextResponse.redirect(new URL('/dashboard', request.url))
+        }
+    }
 
     return supabaseResponse
 }

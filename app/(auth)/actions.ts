@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { headers } from 'next/headers'
 
 export async function login(formData: FormData) {
     const supabase = await createClient()
@@ -25,16 +26,21 @@ export async function login(formData: FormData) {
 
 export async function signup(formData: FormData) {
     const supabase = await createClient()
+    const headerList = await headers()
+    const origin = headerList.get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
     const email = formData.get('email') as string
     const password = formData.get('password') as string
     const fullName = formData.get('fullName') as string
     const situation = formData.get('situation') as string
 
-    const { error } = await supabase.auth.signUp({
+    console.log('[Signup Action] Attempting signup for:', email)
+
+    const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
+            emailRedirectTo: `${origin}/auth/callback`,
             data: {
                 full_name: fullName,
                 situation: situation,
@@ -43,14 +49,14 @@ export async function signup(formData: FormData) {
     })
 
     if (error) {
-        redirect('/signup?error=Could not authenticate user')
+        console.error('[Signup Action] Error:', error.message)
+        redirect(`/signup?error=${encodeURIComponent(error.message)}`)
     }
 
-    // If email confirmation is disabled provided supabase settings, 
-    // we can sync user profile here if trigger didn't fire (reserved for advanced logic)
+    console.log('[Signup Action] Success:', data?.user?.id)
 
     revalidatePath('/', 'layout')
-    redirect('/profil')
+    redirect('/signup?message=Check your email for confirmation link')
 }
 
 export async function signout() {
