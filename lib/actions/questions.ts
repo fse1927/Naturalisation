@@ -115,5 +115,11 @@ export async function getRandomQuizQuestions(limit: number = 10) {
         .select('*')
         .in('id', shuffledIds);
 
-    return data || [];
+    // Filter out invalid questions (empty options or duplicates)
+    // Sometimes DB contains interview questions marked as quiz with empty options
+    const validQuestions = (data || []).filter(q => {
+        return q.options && Array.isArray(q.options) && q.options.length >= 2;
+    });
+
+    return validQuestions;
 }
