@@ -59,7 +59,7 @@ export default function BottomNav() {
                         >
                             {/* Active Indicator Background */}
                             {isActive && (
-                                <div className="absolute top-2 w-12 h-12 bg-primary/10 rounded-2xl -z-10 transition-all duration-300 animate-in fade-in zoom-in" />
+                                <div className="absolute inset-x-3 top-2 bottom-2 bg-primary/10 rounded-2xl -z-10 transition-all duration-300 animate-in fade-in zoom-in" />
                             )}
 
                             <Icon
