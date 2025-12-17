@@ -31,12 +31,8 @@ export default function BottomNav() {
         },
     ];
 
-    // Hide BottomNav on Auth pages
-    if (pathname.includes("/login") || pathname.includes("/signup") || pathname === "/") {
-        // Keeping logic: Home might be landing, so maybe hide. 
-        // User said "Main Page" improvement, usually Main Page = Landing Page.
-        // If we are logged out, we see landing.
-        // Let's assume Nav is for the Dashboard/App part.
+    // Hide BottomNav on Auth pages and Admin pages
+    if (pathname.includes("/login") || pathname.includes("/signup") || pathname === "/" || pathname.startsWith("/admin")) {
         return null;
     }
 

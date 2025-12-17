@@ -21,6 +21,7 @@ export type UserProfile = {
     nom_prenom: string | null;
     profil_situation: string | null;
     email?: string;
+    is_admin?: boolean;
 };
 
 export type UserStats = {

@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation';
 import ThemeToggle from '@/components/ThemeToggle';
 import { HistoryChart } from '@/components/profile/HistoryChart';
 import FadeIn from '@/components/motion/FadeIn';
+import { AdminLink } from '@/components/admin/AdminLink';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,6 +31,7 @@ export default async function ProfilPage() {
                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Gérez votre progression et vos paramètres.</p>
                 </div>
                 <div className="flex items-center gap-2">
+                    <AdminLink isAdmin={user.is_admin || false} />
                     <ThemeToggle />
                     <form action={signout}>
                         <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-colors">
