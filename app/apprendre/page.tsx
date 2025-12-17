@@ -13,7 +13,7 @@ export default async function ApprendrePage({
 }) {
     const params = await searchParams;
     const page = Number(params?.page) || 1;
-    const limit = 12;
+    const limit = 10;
     const search = params?.search as string;
     const chapter = params?.chapter as string;
 

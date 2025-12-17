@@ -10,7 +10,8 @@ import {
     Flag,
     Menu,
     LogOut,
-    X
+    X,
+    Users
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
@@ -18,6 +19,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
     { label: 'Tableau de Bord', icon: LayoutDashboard, href: '/admin' },
+    { label: 'Utilisateurs', icon: Users, href: '/admin/users' },
     { label: 'Questions', icon: FileQuestion, href: '/admin/questions' },
     { label: 'Contenu', icon: BookOpen, href: '/admin/content' },
     { label: 'Signalements', icon: Flag, href: '/admin/feedback' },
@@ -64,7 +66,15 @@ export function AdminSidebar() {
                 })}
             </nav>
 
-            <div className="p-4 border-t border-gray-200 dark:border-slate-800">
+            <div className="p-4 border-t border-gray-200 dark:border-slate-800 space-y-4">
+                <Link
+                    href="/profil"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-gray-700 to-gray-900 rounded-lg hover:from-gray-800 hover:to-black transition-all shadow-md hover:shadow-lg group"
+                >
+                    <LogOut className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
+                    Mode Utilisateur
+                </Link>
+
                 <div className="flex items-center gap-3 px-3 py-2 text-sm text-gray-500">
                     <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center dark:bg-slate-800">
                         <span className="font-bold">A</span>

@@ -1,93 +1,105 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Activity, Users, FileQuestion, MessageCircle } from 'lucide-react';
-import { createClient } from '@/lib/supabase/server';
+import { Activity, Users, FileQuestion, MessageCircle, TrendingUp, TrendingDown } from 'lucide-react';
+import { getDashboardStats } from './dashboard-actions';
+import { GlobalActivityChart } from '@/components/admin/dashboard/GlobalActivityChart';
+import { RecentActivityFeed } from '@/components/admin/dashboard/RecentActivityFeed';
 
 export default async function AdminDashboardPage() {
-    const supabase = await createClient();
-
-    // Fetch stats
-    const { count: userCount } = await supabase.from('utilisateurs').select('id', { count: 'exact', head: true });
-    const { count: questionCount } = await supabase.from('questions').select('id', { count: 'exact', head: true });
-
-    // We might not have feedbacks table populated yet, but let's try
-    let feedbackCount = 0;
-    try {
-        const { count } = await supabase.from('feedbacks_questions').select('id', { count: 'exact', head: true }).eq('status', 'pending');
-        feedbackCount = count || 0;
-    } catch (e) {
-        // Table might not exist yet if migration failed or wasn't run
-    }
+    // Fetch all stats via dedicated server action
+    const stats = await getDashboardStats();
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-500">
+            {/* Header */}
             <div className="flex flex-col gap-2">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Tableau de Bord</h1>
-                <p className="text-gray-500 dark:text-gray-400">Vue d'ensemble de l'application et des statistiques.</p>
+                <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">
+                    Tour de Contrôle
+                </h1>
+                <p className="text-gray-500 dark:text-gray-400 font-medium">
+                    Aperçu global de l'activité.
+                </p>
             </div>
 
+            {/* KPI Grid */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="hover:shadow-md transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-500 uppercase tracking-wide">
-                            Utilisateurs Totaux
-                        </CardTitle>
-                        <Users className="h-4 w-4 text-blue-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{userCount || 0}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            +0% depuis le mois dernier
-                        </p>
-                    </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-md transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-500 uppercase tracking-wide">
-                            Questions Actives
-                        </CardTitle>
-                        <FileQuestion className="h-4 w-4 text-green-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{questionCount || 0}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Base de connaissances
-                        </p>
-                    </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-md transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-500 uppercase tracking-wide">
-                            Signalements
-                        </CardTitle>
-                        <MessageCircle className="h-4 w-4 text-orange-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{feedbackCount}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            En attente de traitement
-                        </p>
-                    </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-md transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-gray-500 uppercase tracking-wide">
-                            Taux de Réussite
-                        </CardTitle>
-                        <Activity className="h-4 w-4 text-purple-500" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">--%</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Moyenne globale (To Do)
-                        </p>
-                    </CardContent>
-                </Card>
+                <KpiCard
+                    title="Utilisateurs"
+                    value={stats.userCount}
+                    icon={Users}
+                    color="text-blue-500"
+                    trend="+12% this week" // Mock data for now
+                    trendUp={true}
+                />
+                <KpiCard
+                    title="Questions Actives"
+                    value={stats.questionCount}
+                    icon={FileQuestion}
+                    color="text-green-500"
+                    description="Base de connaissances"
+                />
+                <KpiCard
+                    title="Signalements"
+                    value={stats.feedbackCount}
+                    icon={MessageCircle}
+                    color="text-orange-500"
+                    alert={stats.feedbackCount > 0}
+                    description="En attente de traitement"
+                />
+                <KpiCard
+                    title="Tests Réalisés"
+                    value={stats.activityData.reduce((acc, curr) => acc + curr.tests, 0)} // Sum of last 30 days
+                    icon={Activity}
+                    color="text-purple-500"
+                    trend="30 derniers jours"
+                />
             </div>
 
-            {/* Can add charts here later */}
+            {/* Main Content Grid: Chart + Feed */}
+            <div className="grid gap-4 md:grid-cols-7">
+                {/* Chart takes 4/7 width */}
+                <div className="md:col-span-4">
+                    <GlobalActivityChart data={stats.activityData} />
+                </div>
+
+                {/* Feed takes 3/7 width */}
+                <div className="md:col-span-3">
+                    <RecentActivityFeed items={stats.recentActivity} />
+                </div>
+            </div>
         </div>
+    );
+}
+
+function KpiCard({ title, value, icon: Icon, color, trend, trendUp, alert, description }: any) {
+    return (
+        <Card className={`hover:shadow-lg transition-all hover:-translate-y-1 duration-300 ${alert ? 'border-orange-200 bg-orange-50/10 dark:border-orange-900/50' : ''}`}>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                    {title}
+                </CardTitle>
+                <div className={`p-2 rounded-full ${alert ? 'bg-orange-100 dark:bg-orange-900' : 'bg-gray-100 dark:bg-gray-800'}`}>
+                    <Icon className={`h-4 w-4 ${color}`} />
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div className="text-3xl font-extrabold tracking-tight">{value}</div>
+
+                {(trend || description) && (
+                    <div className="flex items-center gap-2 mt-2">
+                        {trend && (
+                            <span className={`text-xs font-medium flex items-center ${trendUp ? 'text-green-600' : 'text-gray-500'}`}>
+                                {trendUp && <TrendingUp className="w-3 h-3 mr-1" />}
+                                {trend}
+                            </span>
+                        )}
+                        {description && (
+                            <span className="text-xs text-muted-foreground truncate">
+                                {description}
+                            </span>
+                        )}
+                    </div>
+                )}
+            </CardContent>
+        </Card>
     );
 }
