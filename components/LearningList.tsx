@@ -147,7 +147,11 @@ export default function LearningList({ items, currentPage, totalPages }: Learnin
             {/* filters end */}
 
             {/* List */}
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* List */}
+            <StaggerContainer
+                key={`${currentChapter}-${currentDifficulty}-${searchQuery}-${currentPage}`}
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
                 {items.length === 0 ? (
                     <div className="col-span-full text-center py-16 text-gray-500">
                         Aucun résultat trouvé.
