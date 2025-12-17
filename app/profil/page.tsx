@@ -63,31 +63,139 @@ export default async function ProfilPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="bg-gray-50 dark:bg-slate-950/50 rounded-xl p-4 border border-gray-100 dark:border-slate-800">
-                            <form action={updateUserProfile} className="space-y-4">
+                            <form action={updateUserProfile} className="space-y-6">
                                 <h3 className="text-sm font-bold text-gray-700 flex items-center gap-2 dark:text-gray-300">
                                     <Settings className="w-4 h-4 text-gray-400" />
                                     Mettre à jour mes informations
                                 </h3>
-                                <div className="grid gap-4 sm:grid-cols-[1fr,1fr,auto]">
-                                    <input
-                                        name="nom_prenom"
-                                        defaultValue={user.nom_prenom || ''}
-                                        placeholder="Nom Prénom"
-                                        className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:ring-blue-500/20"
-                                    />
-                                    <select
-                                        name="profil_situation"
-                                        defaultValue={user.profil_situation || ''}
-                                        className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:ring-blue-500/20"
-                                    >
-                                        <option value="">Situation...</option>
-                                        <option value="Célibataire">Célibataire</option>
-                                        <option value="Marié(e)">Marié(e)</option>
-                                        <option value="Étudiant(e)">Étudiant(e)</option>
-                                        <option value="Employé(e)">Employé(e)</option>
-                                    </select>
-                                    <Button type="submit" size="sm" className="h-10 px-6 font-semibold shadow-sm hover:shadow active:scale-95 transition-all">
-                                        Enregistrer
+
+                                {/* Basic Info */}
+                                <div className="grid gap-4 sm:grid-cols-3">
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Nom Prénom</label>
+                                        <input
+                                            name="nom_prenom"
+                                            defaultValue={user.nom_prenom || ''}
+                                            placeholder="Votre nom complet"
+                                            className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                        />
+                                    </div>
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Sexe</label>
+                                        <select
+                                            name="sexe"
+                                            defaultValue={user.sexe || ''}
+                                            className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                        >
+                                            <option value="">Sélectionner...</option>
+                                            <option value="M">Masculin</option>
+                                            <option value="F">Féminin</option>
+                                        </select>
+                                    </div>
+                                    <div className="space-y-1.5">
+                                        <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Situation</label>
+                                        <select
+                                            name="profil_situation"
+                                            defaultValue={user.profil_situation || ''}
+                                            className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                        >
+                                            <option value="">Sélectionner...</option>
+                                            <option value="Célibataire">Célibataire</option>
+                                            <option value="Marié">Marié{user.sexe === 'F' ? 'e' : ''}</option>
+                                            <option value="Pacsé">Pacsé{user.sexe === 'F' ? 'e' : ''}</option>
+                                            <option value="Divorcé">Divorcé{user.sexe === 'F' ? 'e' : ''}</option>
+                                            <option value="Veuf">Veuf{user.sexe === 'F' ? 've' : ''}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Personal Info */}
+                                <div className="pt-4 border-t border-gray-100 dark:border-slate-800">
+                                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Informations Personnelles</h4>
+                                    <div className="grid gap-4 sm:grid-cols-2">
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Profession</label>
+                                            <input
+                                                name="profession"
+                                                defaultValue={user.profession || ''}
+                                                placeholder="Votre métier actuel"
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Date de naissance</label>
+                                            <input
+                                                type="date"
+                                                name="date_naissance"
+                                                defaultValue={user.date_naissance || ''}
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Pays de naissance</label>
+                                            <input
+                                                name="pays_naissance"
+                                                defaultValue={user.pays_naissance || ''}
+                                                placeholder="Ex: Maroc, Algérie, Tunisie..."
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Nationalité d'origine</label>
+                                            <input
+                                                name="nationalite_origine"
+                                                defaultValue={user.nationalite_origine || ''}
+                                                placeholder="Votre nationalité actuelle"
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* France-specific */}
+                                <div className="pt-4 border-t border-gray-100 dark:border-slate-800">
+                                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Situation en France</h4>
+                                    <div className="grid gap-4 sm:grid-cols-3">
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Ville de résidence</label>
+                                            <input
+                                                name="ville_residence"
+                                                defaultValue={user.ville_residence || ''}
+                                                placeholder="Ex: Paris, Lyon..."
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Arrivée en France</label>
+                                            <input
+                                                type="date"
+                                                name="date_arrivee_france"
+                                                defaultValue={user.date_arrivee_france || ''}
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Niveau de français</label>
+                                            <select
+                                                name="niveau_francais"
+                                                defaultValue={user.niveau_francais || ''}
+                                                className="flex h-10 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                                            >
+                                                <option value="">Sélectionner...</option>
+                                                <option value="A1">A1 - Débutant</option>
+                                                <option value="A2">A2 - Élémentaire</option>
+                                                <option value="B1">B1 - Intermédiaire</option>
+                                                <option value="B2">B2 - Avancé</option>
+                                                <option value="C1">C1 - Autonome</option>
+                                                <option value="C2">C2 - Maîtrise</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pt-4 flex justify-end">
+                                    <Button type="submit" className="px-8 font-semibold shadow-sm hover:shadow active:scale-95 transition-all">
+                                        Enregistrer les modifications
                                     </Button>
                                 </div>
                             </form>

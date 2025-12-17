@@ -108,9 +108,30 @@ export async function updateUserProfile(formData: FormData) {
     const nom_prenom = formData.get('nom_prenom') as string
     const profil_situation = formData.get('profil_situation') as string
 
+    // Extended profile fields
+    const sexe = formData.get('sexe') as string || null
+    const date_naissance = formData.get('date_naissance') as string || null
+    const pays_naissance = formData.get('pays_naissance') as string || null
+    const ville_residence = formData.get('ville_residence') as string || null
+    const profession = formData.get('profession') as string || null
+    const nationalite_origine = formData.get('nationalite_origine') as string || null
+    const date_arrivee_france = formData.get('date_arrivee_france') as string || null
+    const niveau_francais = formData.get('niveau_francais') as string || null
+
     const { error } = await supabase
         .from('utilisateurs')
-        .update({ nom_prenom, profil_situation })
+        .update({
+            nom_prenom,
+            profil_situation,
+            sexe: sexe || null,
+            date_naissance: date_naissance || null,
+            pays_naissance: pays_naissance || null,
+            ville_residence: ville_residence || null,
+            profession: profession || null,
+            nationalite_origine: nationalite_origine || null,
+            date_arrivee_france: date_arrivee_france || null,
+            niveau_francais: niveau_francais || null
+        })
         .eq('id', user.id)
 
     if (error) throw new Error('Failed to update profile')

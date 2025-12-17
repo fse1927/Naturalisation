@@ -2,7 +2,7 @@
 import InterviewSimulator from '@/components/InterviewSimulator';
 import { MessageCircle } from 'lucide-react';
 import { getUserProfile } from '@/app/profil/actions';
-import { getInterviewQuestions } from '@/lib/actions/questions';
+import { getRandomQuizQuestions } from '@/lib/actions/questions';
 import { InterviewQuestion } from '@/components/interview/useInterview';
 
 export const dynamic = 'force-dynamic';
@@ -11,22 +11,19 @@ export default async function EntretienPage() {
     const data = await getUserProfile();
     const userSituation = data?.user.profil_situation || 'salarié'; // Default if null
 
-    // Fetch sorted questions based on profile
-    const rawQuestions = await getInterviewQuestions(userSituation);
+    // Fetch random quiz questions
+    const rawQuestions = await getRandomQuizQuestions(40);
 
-    // Map to InterviewQuestion type if needed, or cast if they match structure
-    // Since migration unified schema, `questions` table has `metadata`.
-    // getInterviewQuestions defined in lib/actions/questions.ts returns objects.
+    // Map to InterviewQuestion type
     const questions: InterviewQuestion[] = rawQuestions.map((q: any) => ({
         id: q.id,
         question: q.question,
         category: q.theme,
         metadata: {
-            answer_tips: q.metadata?.answer_tips,
-            required_for: q.metadata?.required_for
+            answer_tips: `Réponse attendue : ${q.answer}\n\n${q.explanation || ''}`,
+            required_for: []
         },
-        // Fallback or mapped
-        answer_tips: q.metadata?.answer_tips || ""
+        answer_tips: `Réponse attendue : ${q.answer}\n\n${q.explanation || ''}`
     }));
 
     return (
