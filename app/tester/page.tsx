@@ -26,7 +26,7 @@ export default function TesterPage() {
                 <p className="text-gray-600">Choisissez votre mode de test.</p>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
                 {/* Entraînement */}
                 <div>
                     <Card
